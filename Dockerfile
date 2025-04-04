@@ -8,14 +8,15 @@ RUN pip install poetry==2.1.1
 ENV POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=1 \
     POETRY_VIRTUALENVS_CREATE=1 \
-    POETRY_CACHE_DIR=/root/.cache/pip
+    POETRY_CACHE_DIR=/root/.cache/pip \
+    CACHE_ID=s/$RAILWAY_SERVICE_ID-/root/cache/pip
 
 WORKDIR /app
 
 COPY pyproject.toml poetry.lock README.md ./
-RUN echo id=s/$RAILWAY_SERVICE_ID-/root/cache/pip
+RUN echo $CACHE_ID
 
-RUN --mount=type=cache,id=s/6a4d6f05-216d-408b-9e0f-e4d738bc4ccb-/root/cache/pip,target=/root/.cache/pip poetry install --without dev --no-root
+RUN --mount=type=cache,id=$CACHE_ID,target=/root/.cache/pip poetry install --without dev --no-root
 
 FROM python:3.11-slim-buster AS runtime
 
