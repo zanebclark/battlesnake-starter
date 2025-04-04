@@ -20,5 +20,3 @@ ENV VIRTUAL_ENV=/app/.venv \
 COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 
 COPY src/battlesnake ./src/battlesnake
-
-ENTRYPOINT ["python", "-m", "annapurna.main"]
