@@ -16,8 +16,8 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock README.md ./
 RUN echo $CACHE_ID
 
-#RUN --mount=type=cache,id=$CACHE_ID,target=/root/.cache/pip poetry install --without dev --no-root
-RUN poetry install --without dev --no-root
+RUN --mount=type=cache,id=${CACHE_ID},target=/root/.cache/pip poetry install --without dev --no-root
+#RUN poetry install --without dev --no-root
 
 FROM python:3.11-slim-buster AS runtime
 
