@@ -1,6 +1,7 @@
 FROM python:3.11-buster AS builder
 # Specify the variable you need
 ARG RAILWAY_SERVICE_ID
+RUN echo $RAILWAY_SERVICE_ID
 
 RUN pip install poetry==2.1.1
 
