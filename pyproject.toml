@@ -1,0 +1,24 @@
+[project]
+name = "battlesnake-starter"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Zane Clark",email = "zanebclark@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi[standard] (>=0.115.12,<0.116.0)"
+]
+
+[tool.poetry]
+packages = [{include = "battlesnake", from = "src"}]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+black = {extras = ["d"], version = "^25.1.0"}
+pre-commit = "^4.2.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
