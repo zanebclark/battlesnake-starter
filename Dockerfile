@@ -13,16 +13,17 @@ ENV POETRY_NO_INTERACTION=1 \
 WORKDIR /app
 
 COPY pyproject.toml poetry.lock README.md ./
+RUN echo id=s/$RAILWAY_SERVICE_ID-/root/cache/pip
 
-RUN --mount=type=cache,id=s/$RAILWAY_SERVICE_ID-/root/cache/pip,target=/root/.cache/pip poetry install --without dev --no-root
-
-FROM python:3.11-slim-buster AS runtime
-
-ENV VIRTUAL_ENV=/app/.venv \
-    PATH="/app/.venv/bin:$PATH"
-
-COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
-
-COPY src/battlesnake ./src/battlesnake
-
-ENTRYPOINT ["python", "-m", "annapurna.main"]
+#RUN --mount=type=cache,id=s/$RAILWAY_SERVICE_ID-/root/cache/pip,target=/root/.cache/pip poetry install --without dev --no-root
+#
+#FROM python:3.11-slim-buster AS runtime
+#
+#ENV VIRTUAL_ENV=/app/.venv \
+#    PATH="/app/.venv/bin:$PATH"
+#
+#COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+#
+#COPY src/battlesnake ./src/battlesnake
+#
+#ENTRYPOINT ["python", "-m", "annapurna.main"]
