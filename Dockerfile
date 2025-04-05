@@ -14,6 +14,8 @@ RUN poetry install --without dev --no-root
 
 FROM python:3.11-slim-buster AS runtime
 
+ARG PORT
+
 ENV VIRTUAL_ENV=/app/.venv \
     PATH="/app/.venv/bin:$PATH"
 
