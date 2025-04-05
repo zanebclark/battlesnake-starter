@@ -5,6 +5,12 @@
     "dockerfilePath": "Dockerfile"
   },
   "deploy": {
-    "startCommand": "hypercorn /src/battlesnake/main:api --bind [::]:8080"
+    "startCommand": "hypercorn /src/battlesnake/main:api --bind [::]:8080",
+    "healthcheckPath": "/",
+    "multiRegionConfig": {
+      "us-west2": {
+        "numReplicas": 1
+      }
+    }
   }
 }
