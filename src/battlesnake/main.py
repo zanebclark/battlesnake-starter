@@ -1,4 +1,4 @@
-from battlesnake.snake import info, move, end, start
+from snake import info, move, end, start
 from fastapi import FastAPI, APIRouter
 
 api = FastAPI(

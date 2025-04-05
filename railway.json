@@ -4,6 +4,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "hypercorn /src/battlesnake/main:app --bind \"[::]:$PORT\""
+    "startCommand": "source /app/.venv/bin/activate && hypercorn /src/battlesnake/main:api --bind \"[::]:$PORT\""
   }
 }
