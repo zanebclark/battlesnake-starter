@@ -5,6 +5,6 @@
     "dockerfilePath": "Dockerfile"
   },
   "deploy": {
-    "startCommand": "echo hypercorn /src/battlesnake/main:api --bind [::]:$PORT"
+    "startCommand": "echo hypercorn /src/battlesnake/main:api --bind [::]:8080"
   }
 }
